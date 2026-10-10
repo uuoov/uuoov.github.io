@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.sites-local/
+.sites-runtime/
+*.log
+.openai/
+docs/SOURCES.md

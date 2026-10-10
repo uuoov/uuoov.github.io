@@ -1,0 +1,22 @@
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">关于我</p>
+        <h2 class="section-heading">从具体问题出发。</h2>
+      </div>
+      <div class="about-copy">
+        <p>我叫梁志聪，在深圳大学学习生物医学工程。我喜欢把求职、教学和团队协作中的麻烦事，做成可以直接使用的网站与AI工具；也会把尝试过的方法整理成课程，教给同学和同事。</p>
+        <p>我的另一条实践线是医疗硬件。在AVF居家监测与康复项目中，我参与临床需求调研、双麦克风手环方案与电路改动，以及康复手套的传感采集、嵌入式接口和通信开发。这些经历让我更重视工具实际怎样被使用，以及原型如何接受验证。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+  .about-copy{color:var(--muted);font-size:1.05rem;line-height:1.9}
+  .about-copy p{margin:0 0 22px}
+  .about-copy p:last-child{margin-bottom:0}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:24px}.about-copy{font-size:1rem}}
+</style>

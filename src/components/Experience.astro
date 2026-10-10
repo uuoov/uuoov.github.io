@@ -1,0 +1,58 @@
+---
+const experiences = [
+  {
+    company: "正大天晴药业集团",
+    role: "肿瘤创新产品市场中心 · 实习生",
+    date: "2026.07—2026.09",
+    description: "参与学术会议资料与专家邀约管理，用AI辅助整理群聊变更、核对名单、批量生成沟通函，并向同事分享使用方法。参与惠民保药品覆盖地图建设，整合超过100 个省市级统筹地区的信息，支持区域查询、数据更新和图片导出。",
+  },
+  {
+    company: "深圳大学医学创新成果转化中心",
+    role: "项目助理",
+    date: "2025.09—2026.07",
+    description: "参与成果转化SOP、入驻服务方案和项目评估材料整理，将临床需求、技术验证与产业合作串成清楚的工作流程。参与医院医疗设备资产盘点与数据分析，整理科室报告，为设备配置、采购与维护提供信息支持。",
+  },
+  {
+    company: "深圳科创学院",
+    role: "项目中心 · 实习生",
+    date: "2026.06—2026.07",
+    description: "参与医疗健康与银发经济调研，赴上海老博会实地观察，分析100+ 款产品的功能、使用场景与渠道。整理产品对比与行业报告，关注居家康复、生活照护和监测产品中的具体需求与应用限制。",
+  },
+];
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <p class="section-label">真实场景里的实践</p>
+    <h2 class="section-heading">让工具进入日常工作。</h2>
+    <div class="experience-list">
+      {experiences.map((item) => (
+        <article class="experience-entry">
+          <div class="experience-meta">
+            <p class="experience-date">{item.date}</p>
+            <h3>{item.company}</h3>
+            <p class="experience-role">{item.role}</p>
+          </div>
+          <p class="experience-copy">{item.description}</p>
+        </article>
+      ))}
+    </div>
+    <div class="operations-note">
+      <p class="operations-label">服务器与智能体运维探索</p>
+      <p>在个人项目中部署网站，探索通过OpenClaw与Hermes检查服务、同步资料和执行维护任务，逐步熟悉从原型开发到上线维护的过程。</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-list{margin-top:36px;border-top:1px solid var(--line)}
+  .experience-entry{display:grid;grid-template-columns:.9fr 1.4fr;gap:52px;padding:30px 0;border-bottom:1px solid var(--line)}
+  .experience-date{color:var(--accent);font-size:.82rem;margin:0 0 10px;font-variant-numeric:tabular-nums}
+  .experience-meta h3{color:var(--ink);font-size:1.08rem;line-height:1.5;margin:0 0 6px}
+  .experience-role{color:var(--muted);font-size:.88rem;margin:0}
+  .experience-copy{color:var(--muted);line-height:1.85;margin:0}
+  .operations-note{margin-top:28px;display:grid;grid-template-columns:.9fr 1.4fr;gap:52px;padding-left:18px;border-left:3px solid var(--accent)}
+  .operations-note p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.8}
+  .operations-note .operations-label{color:var(--ink);font-weight:600}
+  @media(max-width:760px){.experience-entry{grid-template-columns:1fr;gap:16px;padding:25px 0}.operations-note{grid-template-columns:1fr;gap:8px}.experience-list{margin-top:26px}}
+</style>

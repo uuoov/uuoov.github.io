@@ -1,0 +1,46 @@
+<header id="header" class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="梁志聪，返回首页顶部">
+      <span class="brand-badge" aria-hidden="true">ZC</span>
+      <span>梁志聪</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#projects" aria-current="location" data-section-link>项目</a>
+      <a href="#teaching" class="secondary" data-section-link>教学</a>
+      <a href="#experience" class="secondary" data-section-link>经历</a>
+      <a href="#about" class="secondary" data-section-link>关于</a>
+      <a href="./profile.html" class="secondary profile-link">一页简介<span aria-hidden="true">↗</span></a>
+      <a href="#contact" data-section-link>联系</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-section-link]"));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      links.forEach((link) => {
+        if (link.hash === `#${entry.target.id}`) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    });
+  }, { rootMargin: "-20% 0px -60% 0px", threshold: 0 });
+  links.forEach((link) => {
+    const section = document.getElementById(link.hash.slice(1));
+    if (section) observer.observe(section);
+  });
+</script>
+
+<style>
+  .site-header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
+  .brand{display:inline-flex;align-items:center;gap:11px;flex-shrink:0;color:var(--ink);font-weight:650;text-decoration:none}
+  .brand-badge{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--accent);color:var(--line);font-size:.78rem;font-weight:700;letter-spacing:.04em}
+  .nav{display:flex;align-items:center;gap:25px}
+  .nav a{color:var(--muted);font-size:.88rem;text-decoration:none;white-space:nowrap;transition:color .2s ease}
+  .nav a:hover,.nav a[aria-current]{color:var(--accent)}
+  .profile-link{display:inline-flex;align-items:center;gap:6px}
+  @media(max-width:850px){.nav{gap:18px}}
+  @media(max-width:760px){.header-inner{min-height:64px;gap:20px}.nav{gap:22px}.nav .secondary{display:none}.brand{font-size:.94rem}.brand-badge{width:31px;height:31px}}
+</style>

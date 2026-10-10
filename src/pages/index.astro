@@ -1,0 +1,72 @@
+---
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Teaching from '../components/Teaching.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Education from '../components/Education.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../config';
+import '../styles/global.css';
+const origin = 'https://uuoov.github.io';
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={siteConfig.description} />
+    <meta name="theme-color" content="#f8f8f5" />
+    <title>梁志聪｜AI应用与个人作品</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={origin} />
+    <meta property="og:title" content="梁志聪｜AI应用与个人作品" />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={origin} />
+    <meta property="og:image" content={`${origin}/assets/classroom.png`} />
+    <meta property="og:locale" content="zh_CN" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#projects">跳到作品</a>
+    <Header />
+    <main><Hero /><Projects /><Teaching /><Experience /><About /><Education /></main>
+    <Footer />
+    <dialog id="image-dialog" aria-labelledby="image-caption">
+      <div class="modal-head"><p id="image-caption"></p><button class="modal-close" aria-label="关闭图片">×</button></div>
+      <img id="modal-image" class="modal-image" alt="" />
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script>
+      const dialog = document.querySelector<HTMLDialogElement>('#image-dialog');
+      const modalImage = document.querySelector<HTMLImageElement>('#modal-image');
+      const caption = document.querySelector('#image-caption');
+      document.querySelectorAll<HTMLButtonElement>('[data-image]').forEach(button => {
+        button.addEventListener('click', () => {
+          if (!dialog || !modalImage || !caption) return;
+          modalImage.src = button.dataset.image || '';
+          modalImage.alt = button.dataset.caption || '';
+          caption.textContent = button.dataset.caption || '';
+          dialog.showModal();
+        });
+      });
+      document.querySelector('.modal-close')?.addEventListener('click', () => dialog?.close());
+      dialog?.addEventListener('click', event => {
+        if (event.target === dialog) {
+          const bounds = dialog.getBoundingClientRect();
+          if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+        }
+      });
+      document.querySelector<HTMLButtonElement>('[data-copy-email]')?.addEventListener('click', async () => {
+        const toast = document.querySelector('#toast');
+        try {
+          await navigator.clipboard.writeText('m13428020927@163.com');
+          if (toast) { toast.textContent = '邮箱已复制'; toast.classList.add('visible'); setTimeout(() => toast.classList.remove('visible'), 2200); }
+        } catch {
+          if (toast) { toast.textContent = '邮箱：m13428020927@163.com'; toast.classList.add('visible'); setTimeout(() => toast.classList.remove('visible'), 4500); }
+        }
+      });
+    </script>
+  </body>
+</html>
