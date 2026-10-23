@@ -4,7 +4,7 @@
 
 网站内容与链接可在`src/config.ts`维护；下方个人经历、教学介绍在对应Astro组件中。公开简介在`public/profile.html`，不包含手机号或推荐人联系方式。
 
-公开网址：https://uuoov.github.io/ 。源码在main分支，生成的静态网站在gh-pages分支。
+公开网址：https://liangzhicong.com/ 。源码在main分支，生成的静态网站在gh-pages分支。
 
 ## 本地查看
 
